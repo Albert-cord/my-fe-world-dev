@@ -1,4 +1,11 @@
+log = console.log.bind()
 
+const ball = {
+    radiu: null,
+    trangleCount: 10,
+    disToCanvas: 500,
+    disToEye: 1000
+}
 const navItems = [
     {
         text: '首页',
@@ -74,3 +81,37 @@ const siteItems = [
         text: '一个关于分享和探索的地方',
     },
 ]
+
+var transUtil = {
+    tans3DTo2DProj: function(pos3D) {
+        var pos2D = {};
+        var scale = (ball.disToEye - pos3D.y) / (ball.disToEye + ball.disToCanvas);
+        pos2D.x = pos3D.x / scale;
+        pos2D.y = pos3D.z / scale;
+        return pos2D;
+    },
+    horRotate3d: function(pos3D, theta) {
+        var nexPos = {};
+        nexPos.z = pos3D.z;
+        nexPos.x = pos3D.x * Math.cos(theta / 180 * Math.PI) - pos3D.y * Math.sin(theta / 180 * Math.PI);
+        nexPos.y = pos3D.x * Math.sin(theta / 180 * Math.PI) + pos3D.y * Math.cos(theta / 180 * Math.PI);
+        return nexPos;
+    },
+    verRotate3d: function(pos3D, theta) {
+        var nexPos = {};
+        nexPos.x = pos3D.x;
+        nexPos.y = pos3D.y * Math.cos(theta / 180 * Math.PI) - pos3D.z * Math.sin(theta / 180 * Math.PI);
+        nexPos.z = pos3D.y * Math.sin(theta / 180 * Math.PI) + pos3D.z * Math.cos(theta / 180 * Math.PI);
+        return nexPos;
+    },
+    transToCanvasPos: function(pos2D) {
+        var nexPos = {};
+        nexPos.x = pos2D.x;
+        nexPos.y = -pos2D.y;
+        return nexPos;
+    },
+    trans3Dto2DAll: function(pos3D) {
+        var res = transUtil.transToCanvasPos(transUtil.tans3DTo2DProj(pos3D));
+        return res;
+    }
+};

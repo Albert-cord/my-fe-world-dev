@@ -3,14 +3,45 @@
     margin: 0;
     padding: 0;
 }
-canvas.animate {
+
+.content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: visible;
+    /* z-index: 3; */
+    transform: translate(0px, 0%);
+    transition: all 1000ms ease;
+}
+
+.top-title {
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    overflow: hidden;
+}
+.good-site {
+    position: absolute;
+    top: 100%;
+    overflow: hidden;
+
+}
+.good-design {
+    position: absolute;
+    top: 200%;
+    overflow: hidden;
+
+}
+
+.onescroll-page {
+    /* display: none; */
+}
+#canvas {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: #00c1ff;
     z-index: -1;
-    /* margin-left: -10px; */
-    /* margin-top: -10px; */
 
 }
 .head {
@@ -97,7 +128,28 @@ canvas.animate {
     height: 100%; */
     text-align: center;
 }
+.single-grid {
+    float: left;
+    position: relative;
+    width: 33.3%;
+    display: inline-block;
+    /* height: 100%; */
+}
+svg {
+    display: inline-block;
+    fill: blue;
+    opacity: .5;
 
+}
+
+.box-site {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* max-width: 62.5rem; */
+}
 .box-table {
     padding: 10px 0;
     width: 100%;
@@ -144,6 +196,14 @@ canvas.animate {
     line-height: 1.6;
     margin-bottom: 1.25rem;
     text-rendering: optimizeLegibility;
+}
+
+.box-content {
+    float: left;
+    position: relative;
+    width: 66.6%;
+    display: inline-block;
+
 }
 @media only screen and (max-width: 64em) and (min-width: 40.063em){
     .content>.onescroll-page {
